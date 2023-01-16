@@ -9,7 +9,7 @@ class TempatMagang extends Model
 {
     use HasFactory;
     protected $table = 'tempat_magang';
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
 
     public function lowongan()
     {

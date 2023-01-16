@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_perusahaan')->unique();
             $table->string('nama_perusahaan');
-            $table->string('provinsi');
+            $table->string('logo_perusahaan');
+            $table->string('kota');
             $table->string('alamat');
             $table->string('nomor_telepon');
             $table->string('email_perusahaan');
