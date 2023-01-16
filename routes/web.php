@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TempatMagangController;
 use App\Http\Controllers\UserController;
@@ -88,7 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
         //Mater Lowongan Routes
         Route::get('/dashboard/masterLowongan/{tempatMagang}', [LowonganController::class, 'index']);
         Route::get('/dashboard/masterLowongan/{tempatMagang}/create', [LowonganController::class, 'create']);
-        Route::post('/dashboard/masterLowongan/{tempatMagang}', [LowonganController::class, 'store']);
+        Route::post('/dashboard/masterLowongan/', [LowonganController::class, 'store']);
         Route::get('/dashboard/masterLowongan/edit/{lowongan}', [LowonganController::class, 'edit']);
         Route::post('/dashboard/masterLowongan/{lowongan}', [LowonganController::class, 'update']);
         Route::get('/dashboard/masterLowongan/delete/{lowongan}', [LowonganController::class, 'destroy']);

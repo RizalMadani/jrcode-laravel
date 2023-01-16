@@ -11,7 +11,7 @@ class Lowongan extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'lowongan';
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
     protected $with = ['tempatMagang'];
 
     public function tempatMagang()

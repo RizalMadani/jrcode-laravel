@@ -70,7 +70,7 @@
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                                 <a class="dropdown-item"
-                                                                    href="/dashboard/masterTempatMagang/{{ $item->id }}/lowongan">
+                                                                    href="/dashboard/masterLowongan/{{ $item->id }}">
                                                                     <i class="fas fa-file"></i> Kelola Lowongan
                                                                 </a>
                                                             </div>
