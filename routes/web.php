@@ -1,0 +1,85 @@
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('home', [
+        "title" => "Home",
+        "url" => url('/assets')
+    ]);
+});
+
+Route::get('/portofolio', [PortofolioController::class, 'viewAll']);
+
+Route::get('/portofolio/schedule', function () {
+    return view('portofolio.schedule', [
+        "title" => "Schedule",
+        "url" => url('/assets')
+    ]);
+});
+
+//Register Peserta Routes
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'registerStore']);
+
+//Login Routes
+Route::get('/auth/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/auth/login', [AuthController::class, 'authenticate']);
+Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['check_login:admin']], function () {
+        //Master Admin Routes
+        Route::get('/dashboard/masterAdmin', [UserController::class, 'index']);
+        Route::get('/dashboard/masterAdmin/create', [UserController::class, 'create']);
+        Route::post('/dashboard/masterAdmin', [UserController::class, 'store']);
+        Route::get('/dashboard/masterAdmin/edit/{id}', [UserController::class, 'edit']);
+        Route::post('/dashboard/masterAdmin/{id}', [UserController::class, 'update']);
+        Route::get('/dashboard/masterAdmin/delete/{id}', [UserController::class, 'destroy']);
+
+        //Mater Portofolio Routes
+        Route::get('/dashboard/masterPortofolio', [PortofolioController::class, 'index']);
+        Route::get('/dashboard/masterPortofolio/create', [PortofolioController::class, 'create']);
+        Route::post('/dashboard/masterPortofolio', [PortofolioController::class, 'store']);
+        Route::get('/dashboard/masterPortofolio/edit/{id}', [PortofolioController::class, 'edit']);
+        Route::post('/dashboard/masterPortofolio/{id}', [PortofolioController::class, 'update']);
+        Route::get('/dashboard/masterPortofolio/delete/{id}', [PortofolioController::class, 'destroy']);
+
+        //Master Kelas Rotes
+        Route::get('/dashboard/masterKelas', [KelasController::class, 'index']);
+        Route::get('/dashboard/masterKelas/create', [KelasController::class, 'create']);
+        Route::post('/dashboard/masterKelas', [KelasController::class, 'store']);
+        Route::get('/dashboard/masterKelas/edit/{id}', [KelasController::class, 'edit']);
+        Route::post('/dashboard/masterKelas/{id}', [KelasController::class, 'update']);
+        Route::get('/dashboard/masterKelas/delete/{id}', [KelasController::class, 'destroy']);
+
+        //Master Jadwal Kelas Rotes
+        Route::get('/dashboard/masterJadwal', [KelasController::class, 'indexJadwal']);
+        Route::get('/dashboard/masterJadwal/create', [KelasController::class, 'createJadwal']);
+        Route::post('/dashboard/masterJadwal', [KelasController::class, 'storeJadwal']);
+        Route::get('/dashboard/masterJadwal/edit/{id}', [KelasController::class, 'editJadwal']);
+        Route::post('/dashboard/masterJadwal/{id}', [KelasController::class, 'updateJadwal']);
+        Route::get('/dashboard/masterJadwal/delete/{id}', [KelasController::class, 'destroyJadwal']);
+    });
+
+    Route::group(['middleware' => ['check_login:peserta']], function () {
+        //Pesanan Kelas Routes
+        Route::get('/peserta/kelas', [UserController::class, 'indexPeserta']);
+    });
+});
