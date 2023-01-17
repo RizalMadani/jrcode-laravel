@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('id_peserta');
             $table->foreignId('id_lowongan');
             $table->string('cv');
-            $table->string('portofolio');
+            $table->string('portofolio')->nullable();
             $table->date('tanggal_pengajuan');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
