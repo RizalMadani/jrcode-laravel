@@ -47,7 +47,7 @@
                     <div class="divider d-flex align-items-center my-4">
                         <p class="text-center fw-bold mx-3 mb-0">LOGIN</p>
                     </div>
-                    <form action="/auth/login" method="post">
+                    <form method="post" action="/auth/login">
                         @csrf
                         <div class="form-outline mb-4">
                             <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Masukan email" required>
