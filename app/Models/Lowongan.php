@@ -19,4 +19,9 @@ class Lowongan extends Model
         return $this->belongsTo(TempatMagang::class, 'tempat_magang_id');
     }
 
+    public function pengajuanMagang()
+    {
+        return $this->hasMany(PengajuanMagang::class, 'id_lowongan');
+    }
+
 }

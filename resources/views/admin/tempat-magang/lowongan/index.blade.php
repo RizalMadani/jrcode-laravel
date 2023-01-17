@@ -34,40 +34,60 @@
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal dibuka</th>
                                                 <th>Tanggal ditutup</th>
+                                                <th>Jumlah Peserta</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1; ?>
                                             @foreach ($data as $item)
                                                 <tr>
-                                                    <td>{{ $i }}</td>
+                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->judul_lowongan }}</td>
                                                     <td>{!! $item->deskripsi !!}</td>
                                                     <td>{{ $item->tanggal_dibuka }}</td>
                                                     <td>{{ $item->tanggal_ditutup }}</td>
                                                     <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                                id="dropdownMenuButton" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                                                                Aksi
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item"
-                                                                    href="/dashboard/masterLowongan/edit/{{ $item->id }}">
-                                                                    <i class="fas fa-pen"></i> Ubah
-                                                                </a>
-                                                                <a class="dropdown-item"
-                                                                    href="/dashboard/masterLowongan/delete/{{ $item->id }}"
-                                                                    onclick="return confirm('Apakah anda yakin akan menghapus Lowongan?')">
-                                                                    <i class="fas fa-trash"></i> Hapus
-                                                                </a>
+                                                        <span class="badge badge-primary">
+                                                            Pengajuan:
+                                                            {{ $item->pengajuanMagang->where('status', 0)->count() }}</span>
+                                                        <span class="badge badge-success">
+                                                            diterima:
+                                                            {{ $item->pengajuanMagang->where('status', 1)->count() }}
+                                                        </span>
+                                                        <span class="badge badge-danger">
+                                                            ditolak:
+                                                            {{ $item->pengajuanMagang->where('status', 2)->count() }}
+                                                        </span>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="row d-block">
+                                                            <div class="dropdown d-inline">
+                                                                <button class="btn btn-secondary dropdown-toggle"
+                                                                    type="button" id="dropdownMenuButton"
+                                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    Aksi
+                                                                </button>
+                                                                <div class="dropdown-menu"
+                                                                    aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item"
+                                                                        href="/dashboard/masterLowongan/edit/{{ $item->id }}">
+                                                                        <i class="fas fa-pen"></i> Ubah
+                                                                    </a>
+                                                                    <a class="dropdown-item"
+                                                                        href="/dashboard/masterLowongan/delete/{{ $item->id }}"
+                                                                        onclick="return confirm('Apakah anda yakin akan menghapus Lowongan?')">
+                                                                        <i class="fas fa-trash"></i> Hapus
+                                                                    </a>
+                                                                </div>
                                                             </div>
+                                                            <a href="/dashboard/masterLowongan/pengajuanMagang/{{ $item->id }}"
+                                                                class="btn btn-success d-inline">Lihat
+                                                                Peserta</a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <?php $i++; ?>
                                             @endforeach
                                         </tbody>
                                     </table>

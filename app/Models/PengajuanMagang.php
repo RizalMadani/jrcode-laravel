@@ -24,4 +24,14 @@ class PengajuanMagang extends Model
 
         return $contents;
     }
+
+    public function lowongan()
+    {
+        return $this->belongsTo(Lowongan::class, 'id_lowongan');
+    }
+    public function peserta()
+    {
+        return $this->belongsTo(User::class, 'id_peserta');
+    }
+
 }
