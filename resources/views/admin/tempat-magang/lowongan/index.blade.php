@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="mb-2 text-dark">Master Admin</h1>
+                        <h1 class="mb-2 text-dark">Master Lowongan</h1>
                     </div>
                 </div>
             </div>
@@ -30,11 +30,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Username</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>Email</th>
-                                                <th>No Telepon</th>
+                                                <th>Judul Lowongan</th>
+                                                <th>Deskripsi</th>
+                                                <th>Tanggal dibuka</th>
+                                                <th>Tanggal ditutup</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -43,11 +42,10 @@
                                             @foreach ($data as $item)
                                                 <tr>
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $item->nama }}</td>
-                                                    <td>{{ $item->username }}</td>
-                                                    <td>{{ $item->kelamin }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->no_telepon }}</td>
+                                                    <td>{{ $item->judul_lowongan }}</td>
+                                                    <td>{!! $item->deskripsi !!}</td>
+                                                    <td>{{ $item->tanggal_dibuka }}</td>
+                                                    <td>{{ $item->tanggal_ditutup }}</td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -57,12 +55,12 @@
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                 <a class="dropdown-item"
-                                                                    href="/dashboard/masterAdmin/edit/{{ $item->id }}">
+                                                                    href="/dashboard/masterLowongan/edit/{{ $item->id }}">
                                                                     <i class="fas fa-pen"></i> Ubah
                                                                 </a>
                                                                 <a class="dropdown-item"
-                                                                    href="/dashboard/masterAdmin/delete/{{ $item->id }}"
-                                                                    onclick="return confirm('Apakah anda yakin akan menghapus data diri anda?')">
+                                                                    href="/dashboard/masterLowongan/delete/{{ $item->id }}"
+                                                                    onclick="return confirm('Apakah anda yakin akan menghapus Lowongan?')">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             </div>
@@ -75,7 +73,8 @@
                                     </table>
                                 </div>
                                 <div>
-                                    <a href="/dashboard/masterAdmin/create" class="btn btn-secondary">Tambah Data</a>
+                                    <a href="/dashboard/masterLowongan/{{ $tempatMagang->id }}/create"
+                                        class="btn btn-secondary">Tambah Data</a>
                                 </div>
                             </div>
                         </div>

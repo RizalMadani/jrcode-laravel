@@ -14,7 +14,7 @@ class UserController extends Controller
         $data = [
             "title" => "Master Admin",
             "url" => url('/assets'),
-            "data" => $getDdata
+            "data" => $getDdata,
         ];
 
         return view('admin.admin.index', $data);
@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         return view('admin.admin.create', [
             "title" => "Create new Admin",
-            "url" => url('/assets')
+            "url" => url('/assets'),
         ]);
     }
 
@@ -38,7 +38,7 @@ class UserController extends Controller
             "role" => "required",
             "kelamin" => "required",
             "email" => "email|unique:users",
-            "no_telepon" => "required|max:20"
+            "no_telepon" => "required|max:20",
         ]);
 
         $validate['password'] = Hash::make($validate['password']);
@@ -54,7 +54,7 @@ class UserController extends Controller
         return view('admin.admin.update', [
             "title" => "Edit Admin",
             "url" => url('/assets'),
-            "data" => $data
+            "data" => $data,
         ]);
     }
 
@@ -67,7 +67,7 @@ class UserController extends Controller
             "role" => "required",
             "kelamin" => "required",
             "email" => "required",
-            "no_telepon" => "required|max:20"
+            "no_telepon" => "required|max:20",
         ]);
         // dd($validate);
         $validate['password'] = Hash::make($validate['password']);
@@ -99,7 +99,7 @@ class UserController extends Controller
         // ]);
         return view('register', [
             "title" => "Register Peserta",
-            "url" => url('/asset')
+            "url" => url('/asset'),
         ]);
     }
 
@@ -112,12 +112,27 @@ class UserController extends Controller
             "role" => "required",
             "kelamin" => "required",
             "email" => "required",
-            "no_telepon" => "required|max:20"
+            "no_telepon" => "required|max:20",
         ]);
 
         $validate['password'] = Hash::make($validate['password']);
         User::create($validate);
 
         return redirect('/auth/login')->with('success', 'Registrasi Berhasil');
+    }
+
+    //Admin
+
+    public function indexPeserta()
+    {
+
+        $getDdata = User::get()->all();
+        $data = [
+            "title" => "Peserta",
+            "url" => url('/assets'),
+            "data" => $getDdata,
+        ];
+
+        return view('peserta.peserta.index', $data);
     }
 }

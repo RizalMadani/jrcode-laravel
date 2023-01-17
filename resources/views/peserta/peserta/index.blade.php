@@ -1,11 +1,11 @@
-@extends('admin.template')
+@extends('peserta.template')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="mb-2 text-dark">Master Admin</h1>
+                        <h1 class="mb-2 text-dark">Peserta</h1>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-striped text-center">
+                                    {{-- <table id="example" class="table table-bordered table-striped text-center">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -72,10 +72,10 @@
                                                 <?php $i++; ?>
                                             @endforeach
                                         </tbody>
-                                    </table>
+                                    </table> --}}
                                 </div>
                                 <div>
-                                    <a href="/dashboard/masterAdmin/create" class="btn btn-secondary">Tambah Data</a>
+                                    {{-- <a href="/dashboard/masterAdmin/create" class="btn btn-secondary">Tambah Data</a> --}}
                                 </div>
                             </div>
                         </div>

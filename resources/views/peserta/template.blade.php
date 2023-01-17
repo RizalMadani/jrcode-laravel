@@ -108,13 +108,34 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                            <a href="/dashboard/masterAdmin" class="nav-link">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" href="#">
                                 <i class="fas fa-user"></i>
-                                <p>Master Admin</p>
+                                Magang
                             </a>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <div>
+                                    <a class="dropdown-item" href="/peserta/daftar_magang"
+                                        style="text-decoration: none; color:rgb(2, 1, 1)">Pendaftarn magang</a>
+                                </div>
+                                <hr>
+                                <div>
+                                    <a class="dropdown-item" href="/dashboard/masterJadwal"
+                                        style="text-decoration: none; color:rgb(2, 1, 1)">History pendaftaran magang
+                                    </a>
+                                </div>
+
+                            </div>
                         </li>
-                        <li class="nav-item">
+
+                        {{-- <li class="nav-item">
+                            <a href="/peserta/daftar_magang" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>Pendaftaran Magang</p>
+                            </a>
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="/dashboard/masterPortofolio" class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Master Portofolio</p>
@@ -126,28 +147,10 @@
                                 <p>Master Magang</p>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" data-toggle="dropdown" href="#">
-                                <i class="fas fa-cog"></i>
-                                Kelas
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                <div>
-                                    <a class="dropdown-item" href="/dashboard/masterKelas"
-                                        style="text-decoration: none; color:rgb(2, 1, 1)">Kelas</a>
-                                </div>
-                                <hr>
-                                <div>
-                                    <a class="dropdown-item" href="/dashboard/masterJadwal"
-                                        style="text-decoration: none; color:rgb(2, 1, 1)">Jadwal</a>
-                                </div>
-                                <hr>
-                                <div>
-                                    <a class="dropdown-item" href="/"
-                                        style="text-decoration: none; color:rgb(2, 1, 1)">Paket</a>
-                                </div>
-                            </div>
-                        </li>
+                        --}}
+
+
+
                     </ul>
                 </nav>
             </div>

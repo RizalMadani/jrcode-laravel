@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="mb-2 text-dark">Master Admin</h1>
+                        <h1 class="mb-2 text-dark">Master Tempat Magang</h1>
                     </div>
                 </div>
             </div>
@@ -30,24 +30,28 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Username</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>Email</th>
-                                                <th>No Telepon</th>
-                                                <th>Action</th>
+                                                <th>Kode Perusahaan</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Logo Perusahaan</th>
+                                                <th>Kota</th>
+                                                <th>Alamat</th>
+                                                <th>Nomor Telepon</th>
+                                                <th>Email Perusahaan</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1; ?>
                                             @foreach ($data as $item)
                                                 <tr>
-                                                    <td>{{ $i }}</td>
-                                                    <td>{{ $item->nama }}</td>
-                                                    <td>{{ $item->username }}</td>
-                                                    <td>{{ $item->kelamin }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->no_telepon }}</td>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->kode_perusahaan }}</td>
+                                                    <td>{{ $item->nama_perusahaan }}</td>
+                                                    <td><img src="{{ asset('storage/' . $item->logo_perusahaan) }}"
+                                                            alt="" class="img-thumbnail" style="width: 300px;"></td>
+                                                    <td>{{ $item->kota }}</td>
+                                                    <td>{{ $item->alamat }}</td>
+                                                    <td>{{ $item->nomor_telepon }}</td>
+                                                    <td>{{ $item->email_perusahaan }}</td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -57,25 +61,28 @@
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                 <a class="dropdown-item"
-                                                                    href="/dashboard/masterAdmin/edit/{{ $item->id }}">
+                                                                    href="/dashboard/masterTempatMagang/edit/{{ $item->id }}">
                                                                     <i class="fas fa-pen"></i> Ubah
                                                                 </a>
                                                                 <a class="dropdown-item"
-                                                                    href="/dashboard/masterAdmin/delete/{{ $item->id }}"
-                                                                    onclick="return confirm('Apakah anda yakin akan menghapus data diri anda?')">
+                                                                    href="/dashboard/masterTempatMagang/delete/{{ $item->id }}"
+                                                                    onclick="return confirm('Apakah anda yakin akan menghapus Tempat Magang?')">
                                                                     <i class="fas fa-trash"></i> Hapus
+                                                                </a>
+                                                                <a class="dropdown-item"
+                                                                    href="/dashboard/masterLowongan/{{ $item->id }}">
+                                                                    <i class="fas fa-file"></i> Kelola Lowongan
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <?php $i++; ?>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                                 <div>
-                                    <a href="/dashboard/masterAdmin/create" class="btn btn-secondary">Tambah Data</a>
+                                    <a href="/dashboard/masterTempatMagang/create" class="btn btn-secondary">Tambah Data</a>
                                 </div>
                             </div>
                         </div>

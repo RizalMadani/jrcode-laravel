@@ -5,15 +5,17 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Jrcodestudio | {{$title}}</title>
+    <title>Jrcodestudio | {{ $title }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{$url}}/img/favicon/jrCodeStudio.png">
+    <link rel="icon" type="image/png" href="{{ $url }}/img/favicon/jrCodeStudio.png">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Krub:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Krub:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <style>
         * {
@@ -22,15 +24,15 @@
     </style>
 
     <!-- Vendor CSS Files -->
-    <link href="{{$url}}/vendor/aos/aos.css" rel="stylesheet">
-    <link href="{{$url}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{$url}}/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{$url}}/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="{{$url}}/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="{{$url}}/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/aos/aos.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="{{ $url }}/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{$url}}/css/style.css" rel="stylesheet">
+    <link href="{{ $url }}/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -110,22 +112,23 @@
     </footer>
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- jQuery Ajax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Vendor JS Files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="{{$url}}/vendor/aos/aos.js"></script>
-    <script src="{{$url}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{$url}}/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="{{$url}}/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="{{$url}}/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="{{$url}}/vendor/php-email-form/validate.js"></script>
+    <script src="{{ $url }}/vendor/aos/aos.js"></script>
+    <script src="{{ $url }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ $url }}/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="{{ $url }}/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="{{ $url }}/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ $url }}/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{$url}}/js/main.js"></script>
+    <script src="{{ $url }}/js/main.js"></script>
     <script>
         $(document).ready(function() {
             $('#pembayaran').on('change', function() {
@@ -134,25 +137,25 @@
 
                 if (getBank == "Bank BCA") {
                     $('#NoVa').text("8398391093");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-bca.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-bca.png')
                 } else if (getBank == "Bank BTN") {
                     $('#NoVa').text("0293883728");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-btn.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-btn.png')
                 } else if (getBank == "Bank BNI") {
                     $('#NoVa').text("9392003847");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-bni.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-bni.png')
                 } else if (getBank == "Indomaret") {
                     $('#NoVa').text("9283728910");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-indomaret.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-indomaret.png')
                 } else if (getBank == "Alfamaret") {
                     $('#NoVa').text("9283728910");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-alfamaret.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-alfamaret.png')
                 } else if (getBank == "OVO") {
                     $('#NoVa').text("0892837727");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-ovo.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-ovo.png')
                 } else {
                     $('#NoVa').text("0892837727");
-                    $('#img').attr('src', '{{$url}}/img/payment/logo-ovo.png')
+                    $('#img').attr('src', '{{ $url }}/img/payment/logo-ovo.png')
                 }
             });
 

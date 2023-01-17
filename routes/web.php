@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\TempatMagangController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('home', [
         "title" => "Home",
-        "url" => url('/assets')
+        "url" => url('/assets'),
     ]);
 });
 
@@ -30,7 +31,7 @@ Route::get('/portofolio', [PortofolioController::class, 'viewAll']);
 Route::get('/portofolio/schedule', function () {
     return view('portofolio.schedule', [
         "title" => "Schedule",
-        "url" => url('/assets')
+        "url" => url('/assets'),
     ]);
 });
 
@@ -42,6 +43,7 @@ Route::post('/register', [UserController::class, 'registerStore']);
 Route::get('/auth/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['check_login:admin']], function () {
@@ -76,10 +78,28 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/masterJadwal/edit/{id}', [KelasController::class, 'editJadwal']);
         Route::post('/dashboard/masterJadwal/{id}', [KelasController::class, 'updateJadwal']);
         Route::get('/dashboard/masterJadwal/delete/{id}', [KelasController::class, 'destroyJadwal']);
+
+        //Mater Magang Routes
+        Route::get('/dashboard/masterTempatMagang', [TempatMagangController::class, 'index']);
+        Route::get('/dashboard/masterTempatMagang/create', [TempatMagangController::class, 'create']);
+        Route::post('/dashboard/masterTempatMagang', [TempatMagangController::class, 'store']);
+        Route::get('/dashboard/masterTempatMagang/edit/{tempatMagang}', [TempatMagangController::class, 'edit']);
+        Route::post('/dashboard/masterTempatMagang/{tempatMagang}', [TempatMagangController::class, 'update']);
+        Route::get('/dashboard/masterTempatMagang/delete/{tempatMagang}', [TempatMagangController::class, 'destroy']);
+
+        //Mater Lowongan Routes
+        Route::get('/dashboard/masterLowongan/{tempatMagang}', [LowonganController::class, 'index']);
+        Route::get('/dashboard/masterLowongan/{tempatMagang}/create', [LowonganController::class, 'create']);
+        Route::post('/dashboard/masterLowongan/', [LowonganController::class, 'store']);
+        Route::get('/dashboard/masterLowongan/edit/{lowongan}', [LowonganController::class, 'edit']);
+        Route::post('/dashboard/masterLowongan/{lowongan}', [LowonganController::class, 'update']);
+        Route::get('/dashboard/masterLowongan/delete/{lowongan}', [LowonganController::class, 'destroy']);
     });
 
     Route::group(['middleware' => ['check_login:peserta']], function () {
         //Pesanan Kelas Routes
-        Route::get('/peserta/kelas', [UserController::class, 'indexPeserta']);
+        Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
+        Route::get('/peserta/lowongan/{tempatMagang}', [LowonganController::class, 'lowongan']);
+        Route::post('/peserta/lowongan/pengajuan', [LowonganController::class, 'pengajuan_lowongan']);
     });
 });
