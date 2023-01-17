@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lowongan;
+use App\Models\PengajuanMagang;
 use App\Models\TempatMagang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LowonganController extends Controller
 {
@@ -137,5 +139,55 @@ class LowonganController extends Controller
         ];
 
         return view('peserta.tempat-magang.lowongan.index', $data);
+    }
+
+    public function pengajuan_lowongan(Request $request)
+    {
+
+        // dd(date("Y-m-d"));
+
+        $request->validate([
+            'cv' => 'required|mimes:pdf|max:2048',
+            'porto' => 'mimes:pdf|max:2048',
+        ]);
+
+        // $fileName = time() . '.' . $request->file->extension();
+
+        //untuk CV
+        $file_cv = $request->file('cv');
+        // dd($file->extension());
+        $name_cv = Str::random(10);
+        $full_name_cv = $name_cv . '.' . $file_cv->extension();
+        $file_cv->move(public_path('assets/img/cv'), $full_name_cv);
+
+        $full_name_porto = "";
+        if ($request->hasFile('porto')) {
+            //untuk porto
+            $file_porto = $request->file('porto');
+            // dd($file->extension());
+            $name_porto = Str::random(10);
+            $full_name_porto = $name_porto . '.' . $file_porto->extension();
+            $file_porto->move(public_path('assets/img/porto'), $full_name_porto);
+        }
+        /*
+        Write Code Here for
+        Store $fileName name in DATABASE from HERE
+         */
+
+        $id_user = $request->input('id_peserta');
+        $id_lowongan = $request->input('id_lowongan');
+        $date = date("Y-m-d");
+
+        PengajuanMagang::create([
+            'id_peserta' => $id_user,
+            'id_lowongan' => $id_lowongan,
+            'cv' => $full_name_cv,
+            'portofolio' => $full_name_porto,
+            'tanggal_pengajuan' => $date,
+        ]);
+
+        return back()
+            ->with('success', 'You have successfully upload file.');
+
     }
 }

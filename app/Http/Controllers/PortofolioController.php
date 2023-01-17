@@ -14,7 +14,7 @@ class PortofolioController extends Controller
         $data = [
             "title" => "Master Portofolio",
             "url" => url('/assets'),
-            "data" => $getDdata
+            "data" => $getDdata,
         ];
 
         return view('admin.portofolio.index', $data);
@@ -24,7 +24,7 @@ class PortofolioController extends Controller
     {
         return view('admin.portofolio.create', [
             "title" => "Create new Portofolio",
-            "url" => url('/assets')
+            "url" => url('/assets'),
         ]);
     }
 
@@ -34,7 +34,7 @@ class PortofolioController extends Controller
             "title" => "required|max:20",
             "link" => "required",
             "image" => "required|image|file|max:2048",
-            "body" => "required"
+            "body" => "required",
         ]);
 
         $validate['image'] = $request->file('image')->store('portofolio-images');
@@ -51,7 +51,7 @@ class PortofolioController extends Controller
         return view('admin.portofolio.update', [
             "title" => "Edit Portofolio",
             "url" => url('/assets'),
-            "data" => $data
+            "data" => $data,
         ]);
     }
 
@@ -62,9 +62,8 @@ class PortofolioController extends Controller
             "title" => "required|max:50",
             "link" => "required|max:100",
             "image" => "image|file|max:2048",
-            "body" => "required"
+            "body" => "required",
         ]);
-
 
         if ($request->file('image')) {
             Storage::delete($request->oldImage);
@@ -94,7 +93,7 @@ class PortofolioController extends Controller
         return view('portofolio.portofolio', [
             "title" => "Portofolio",
             "url" => url('/assets'),
-            "data" => $data
+            "data" => $data,
         ]);
     }
 }

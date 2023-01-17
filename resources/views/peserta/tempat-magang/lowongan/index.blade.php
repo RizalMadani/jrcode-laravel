@@ -28,6 +28,21 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
+
+                        @error('cv')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span>{{ $message }}</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @enderror
+
+                        @error('porto')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span>{{ $message }}</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @enderror
+
                         <strong>{{ session('success') }}</strong>
                         <div class="card">
                             <div class="card-body">
@@ -53,8 +68,9 @@
                                                     <td>{{ $item->tanggal_dibuka }}</td>
                                                     <td>{{ $item->tanggal_ditutup }}</td>
                                                     <td width=200>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#exampleModal">
+                                                        <button type="button" class="btn btn-primary pengajuan-magang"
+                                                            data-toggle="modal" data-target="#exampleModal"
+                                                            data-idlowongan="{{ $item->id }}">
                                                             <i class="fas fa-pen"></i> Ajukan Magang
                                                         </button>
                                                     </td>
@@ -79,27 +95,76 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pengajuan magang</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pengajuan Magang</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <form action="/peserta/lowongan/pengajuan" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" name="id_peserta" id="id_peserta" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="id_lowongan" id="id_lowongan">
 
-                    <form action="">
 
-                        <input type="text" id="id_peserta" value="{{ auth()->user()->id }}">
-                        <input type="text" id="id_lowongan">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Perhatian!</strong> file yang diupload harus berupa PDF dan maksimal file yaitu 2mb.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
 
-                    </form>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Kirim</button>
-                </div>
+                        <div class="form-group">
+                            <label for="">CV</label>
+                            <div class="custom-file">
+                                <input type="file" name="cv" class="custom-file-input" id="cv"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Portofolio</label>
+                            <div class="custom-file">
+                                <input type="file" name="porto" class="custom-file-input" id="porto"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                <small id="emailHelp" class="form-text text-red"><i>*opsional</i></small>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).on("click", ".pengajuan-magang", function() {
+
+            // alert("ok")
+            var lowongan_id = $(this).data('idlowongan');
+            $(".modal-body #id_lowongan").val(lowongan_id);
+            // As pointed out in comments, 
+            // it is unnecessary to have to manually call the modal.
+            // $('#addBookDialog').modal('show');
+        });
+    </script>
 @endsection

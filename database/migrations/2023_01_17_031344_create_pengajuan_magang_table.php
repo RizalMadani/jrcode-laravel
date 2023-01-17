@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('id_lowongan');
             $table->string('cv');
             $table->string('portofolio');
+            $table->date('tanggal_pengajuan');
             $table->timestamps();
         });
     }

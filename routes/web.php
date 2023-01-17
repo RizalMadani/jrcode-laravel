@@ -100,5 +100,6 @@ Route::group(['middleware' => ['auth']], function () {
         //Pesanan Kelas Routes
         Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
         Route::get('/peserta/lowongan/{tempatMagang}', [LowonganController::class, 'lowongan']);
+        Route::post('/peserta/lowongan/pengajuan', [LowonganController::class, 'pengajuan_lowongan']);
     });
 });
