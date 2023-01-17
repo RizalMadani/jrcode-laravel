@@ -123,4 +123,19 @@ class LowonganController extends Controller
 
         return back()->with('success', 'Data berhasil dihapus');
     }
+
+    //Peserta
+
+    public function lowongan(TempatMagang $tempatMagang)
+    {
+        $getDdata = Lowongan::where('tempat_magang_id', $tempatMagang->id)->get();
+        $data = [
+            "title" => "Master Lowongan",
+            "url" => url('/assets'),
+            "data" => $getDdata,
+            "tempatMagang" => $tempatMagang,
+        ];
+
+        return view('peserta.tempat-magang.lowongan.index', $data);
+    }
 }

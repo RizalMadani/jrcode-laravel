@@ -43,6 +43,7 @@ Route::post('/register', [UserController::class, 'registerStore']);
 Route::get('/auth/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['check_login:admin']], function () {
@@ -97,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['check_login:peserta']], function () {
         //Pesanan Kelas Routes
-        Route::get('/peserta/kelas', [UserController::class, 'indexPeserta']);
+        Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
+        Route::get('/peserta/lowongan/{tempatMagang}', [LowonganController::class, 'lowongan']);
     });
 });

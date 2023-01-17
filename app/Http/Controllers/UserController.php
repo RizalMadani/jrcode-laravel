@@ -120,4 +120,19 @@ class UserController extends Controller
 
         return redirect('/auth/login')->with('success', 'Registrasi Berhasil');
     }
+
+    //Admin
+
+    public function indexPeserta()
+    {
+
+        $getDdata = User::get()->all();
+        $data = [
+            "title" => "Peserta",
+            "url" => url('/assets'),
+            "data" => $getDdata,
+        ];
+
+        return view('peserta.peserta.index', $data);
+    }
 }

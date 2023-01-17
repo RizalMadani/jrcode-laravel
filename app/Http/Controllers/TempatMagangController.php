@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lowongan;
 use App\Models\TempatMagang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -140,5 +141,29 @@ class TempatMagangController extends Controller
         Storage::delete($tempatMagang->logo_perusahaan);
 
         return redirect('/dashboard/masterTempatMagang')->with('success', 'Data berhasil dihapus');
+    }
+
+    //Peserta
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tempat_magang()
+    {
+        $getDdata = TempatMagang::all();
+
+        
+
+        // $ct_lowongan = Lowongan::where('tempat_magang_id', $tempatMagang->id)->get();
+
+        $data = [
+            "title" => "Tempat Magang",
+            "url" => url('/assets'),
+            "data" => $getDdata,
+        ];
+
+        return view('peserta.tempat-magang.index', $data);
     }
 }

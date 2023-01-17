@@ -11,15 +11,18 @@ class AuthController extends Controller
     {
         return view('auth.login', [
             "title" => "Login",
-            "url" => url('/assets')
+            "url" => url('/assets'),
         ]);
+
+        // 1
+        // Cache::flush();
     }
 
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
             "email" => "required|email",
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
         ]);
         // dd($request);
 
@@ -30,7 +33,9 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->intended('/dashboard/masterAdmin')->with('success', 'Anda Berhasil Login');
             } else if ($user->role == 'peserta') {
-                return redirect()->intended('/peserta/kelas')->with('success', 'Anda Berhasil Login');
+                return redirect()->intended('/peserta/daftar_magang')->with('success', 'Anda Berhasil Login');
+
+                // dd("OK!");
             }
 
             return redirect('/');
