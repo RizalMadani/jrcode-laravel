@@ -126,6 +126,32 @@ class LowonganController extends Controller
         return back()->with('success', 'Data berhasil dihapus');
     }
 
+    public function pengajuanMagang(Lowongan $lowongan)
+    {
+        $data_pengajuan = pengajuanMagang::where([
+            'status' => 0,
+            'id_lowongan' => $lowongan->id,
+        ])->get();
+        $data_diterima = pengajuanMagang::where([
+            'status' => 1,
+            'id_lowongan' => $lowongan->id,
+        ])->get();
+        $data_ditolak = pengajuanMagang::where([
+            'status' => 2,
+            'id_lowongan' => $lowongan->id,
+        ])->get();
+        $data = [
+            "title" => "Pengajuan Magang",
+            "url" => url('/assets'),
+            "data_pengajuan" => $data_pengajuan,
+            "data_diterima" => $data_diterima,
+            "data_ditolak" => $data_ditolak,
+            "lowongan" => $lowongan,
+        ];
+
+        return view('admin.tempat-magang.lowongan.pengajuan-magang', $data);
+    }
+
     //Peserta
 
     public function lowongan(TempatMagang $tempatMagang)

@@ -23,7 +23,15 @@
                                 {{ auth()->user()->username }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/dashboard/masterAdmin"> Dashboard</a></li>
+                                <li>
+
+                                    @if (auth()->user()->id == 1)
+                                        <a class="dropdown-item" href="/dashboard/masterAdmin"> Dashboard</a>
+                                    @else
+                                        <a class="dropdown-item" href="/peserta/daftar_magang"> Dashboard</a>
+                                    @endif
+
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -66,8 +74,11 @@
                 <h2>Perdalam kemampuan desain dan coding secara fokus dan terarah serta dapatkan sertifikat resminya</h2>
                 <h2>Ayoo tunggu apalagi</h2>
                 &nbsp;
-                <a href="/pendaftaran" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Segera
+                <a href="/register" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Segera
                     daftarkan diri anda</a>
+
+
+
                 <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
                 <img src="{{ $url }}/img/home-page.jpg" class="img-fluid hero-img" alt=""
                     data-aos="zoom-in" data-aos-delay="150">

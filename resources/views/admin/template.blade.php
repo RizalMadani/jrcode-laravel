@@ -109,6 +109,12 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
+                            <a href="/dashboard/" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/dashboard/masterAdmin" class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Master Admin</p>
@@ -124,6 +130,12 @@
                             <a href="/dashboard/masterTempatMagang" class="nav-link">
                                 <i class="fas fa-users"></i>
                                 <p>Master Magang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dashboard/pengajuanMagang" class="nav-link">
+                                <i class="fas fa-users"></i>
+                                <p>Pengajuan Magang</p>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
