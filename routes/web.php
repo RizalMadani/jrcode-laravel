@@ -99,7 +99,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['check_login:peserta']], function () {
         //Pesanan Kelas Routes
         Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
+        Route::get('/peserta/lowongan/history', [LowonganController::class, 'history_pengajuan_lowongan']);
         Route::get('/peserta/lowongan/{tempatMagang}', [LowonganController::class, 'lowongan']);
         Route::post('/peserta/lowongan/pengajuan', [LowonganController::class, 'pengajuan_lowongan']);
+
     });
 });

@@ -190,4 +190,21 @@ class LowonganController extends Controller
             ->with('success', 'You have successfully upload file.');
 
     }
+
+    public function history_pengajuan_lowongan()
+    {
+
+        $getDdata = PengajuanMagang::get_all_content();
+
+        // dd($getDdata);
+
+        $data = [
+            "title" => "History Lowongan",
+            "url" => url('/assets'),
+            "data" => $getDdata,
+        ];
+
+        return view('peserta.tempat-magang.lowongan.history', $data);
+
+    }
 }

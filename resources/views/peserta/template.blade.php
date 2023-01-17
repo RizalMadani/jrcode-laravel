@@ -121,7 +121,7 @@
                                 </div>
                                 <hr>
                                 <div>
-                                    <a class="dropdown-item" href="/dashboard/masterJadwal"
+                                    <a class="dropdown-item" href="/peserta/lowongan/history"
                                         style="text-decoration: none; color:rgb(2, 1, 1)">History pendaftaran magang
                                     </a>
                                 </div>
