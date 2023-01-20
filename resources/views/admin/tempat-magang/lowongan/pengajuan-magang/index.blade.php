@@ -33,6 +33,7 @@
                                                 <th>No</th>
                                                 <th>Judul Magang</th>
                                                 <th>Nama Peserta</th>
+                                                <th>Asal Sekolah/Universitas</th>
                                                 <th>CV</th>
                                                 <th>Portofolio</th>
                                                 <th>Tanggal Pengajuan</th>
@@ -45,6 +46,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $pengajuan->lowongan->judul_lowongan }}</td>
                                                     <td>{{ $pengajuan->peserta->nama }}</td>
+                                                    <td>{{ $pengajuan->peserta->asal_univ }}</td>
                                                     <td><a href="{{ asset('storage/' . $pengajuan->cv) }}"
                                                             class="btn btn-link"><i class="fas fa-download"> Download CV</i>
                                                         </a></td>
