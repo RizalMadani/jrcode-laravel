@@ -48,5 +48,7 @@ class DatabaseSeeder extends Seeder
         foreach ($users as $user) {
             User::create($user);
         }
+
+        Lowongan::factory(10)->create();
     }
 }
