@@ -6,6 +6,7 @@ use App\Models\Lowongan;
 use App\Models\PengajuanMagang;
 use App\Models\TempatMagang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class LowonganController extends Controller
@@ -15,14 +16,16 @@ class LowonganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TempatMagang $tempatMagang)
+    public function index()
     {
-        $getDdata = Lowongan::where('tempat_magang_id', $tempatMagang->id)->get();
+        // $getDdata = Lowongan::where('tempat_magang_id', $tempatMagang->id)->get();
+        $getDdata = Lowongan::all();
+
         $data = [
             "title" => "Master Lowongan",
-            "url" => url('/assets'),
-            "data" => $getDdata,
-            "tempatMagang" => $tempatMagang,
+            "url"   => url('/assets'),
+            "data"  => $getDdata,
+            // "tempatMagang" => $tempatMagang,
         ];
 
         return view('admin.tempat-magang.lowongan.index', $data);
@@ -154,14 +157,15 @@ class LowonganController extends Controller
 
     //Peserta
 
-    public function lowongan(TempatMagang $tempatMagang)
+    public function lowongan()
     {
-        $getDdata = Lowongan::where('tempat_magang_id', $tempatMagang->id)->get();
+        $getDdata = Lowongan::all();
+
         $data = [
             "title" => "Master Lowongan",
             "url" => url('/assets'),
             "data" => $getDdata,
-            "tempatMagang" => $tempatMagang,
+            // "tempatMagang" => $tempatMagang,
         ];
 
         return view('peserta.tempat-magang.lowongan.index', $data);

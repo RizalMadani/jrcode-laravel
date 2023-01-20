@@ -61,7 +61,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <div class="row d-block">
+                                                        <div class="row d-block ">
                                                             <div class="dropdown d-inline">
                                                                 <button class="btn btn-secondary dropdown-toggle"
                                                                     type="button" id="dropdownMenuButton"
@@ -93,7 +93,7 @@
                                     </table>
                                 </div>
                                 <div>
-                                    <a href="/dashboard/masterLowongan/{{ $tempatMagang->id }}/create"
+                                    <a href="/dashboard/masterLowongan/create"
                                         class="btn btn-secondary">Tambah Data</a>
                                 </div>
                             </div>

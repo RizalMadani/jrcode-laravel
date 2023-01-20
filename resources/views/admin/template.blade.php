@@ -127,9 +127,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/masterTempatMagang" class="nav-link">
+                            <a href="/dashboard/masterLowongan" class="nav-link">
                                 <i class="fas fa-users"></i>
-                                <p>Master Magang</p>
+                                <p>Master Lowongan</p>
                             </a>
                         </li>
                         <li class="nav-item">

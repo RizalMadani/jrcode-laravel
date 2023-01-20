@@ -23,7 +23,6 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Perusahaan</th>
                                                 <th>Judul Lowongan</th>
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal pengajuan</th>
@@ -35,7 +34,6 @@
                                             @foreach ($data as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->nama_perusahaan }}</td>
                                                     <td>{{ $item->judul_lowongan }}</td>
                                                     <td>{!! $item->deskripsi !!}</td>
                                                     <td>{{ $item->tanggal_pengajuan }}</td>

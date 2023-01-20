@@ -12,12 +12,12 @@ class Lowongan extends Model
     use SoftDeletes;
     protected $table = 'lowongan';
     protected $guarded = ['id'];
-    protected $with = ['tempatMagang'];
+    // protected $with = ['tempatMagang'];
 
-    public function tempatMagang()
-    {
-        return $this->belongsTo(TempatMagang::class, 'tempat_magang_id');
-    }
+    // public function tempatMagang()
+    // {
+    //     return $this->belongsTo(TempatMagang::class, 'tempat_magang_id');
+    // }
 
     public function pengajuanMagang()
     {

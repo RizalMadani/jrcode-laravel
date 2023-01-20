@@ -11,7 +11,7 @@
 
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="mb-2 text-dark">Lowongan Kerja {{ $tempatMagang->nama_perusahaan }}</h1>
+                        <h1 class="mb-2 text-dark">Lowongan Kerja</h1>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,7 @@
             // alert("ok")
             var lowongan_id = $(this).data('idlowongan');
             $(".modal-body #id_lowongan").val(lowongan_id);
-            // As pointed out in comments, 
+            // As pointed out in comments,
             // it is unnecessary to have to manually call the modal.
             // $('#addBookDialog').modal('show');
         });

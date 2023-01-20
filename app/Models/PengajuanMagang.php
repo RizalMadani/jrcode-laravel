@@ -17,7 +17,7 @@ class PengajuanMagang extends Model
 
         $contents = DB::table('pengajuan_magang')
             ->join('lowongan', 'pengajuan_magang.id_lowongan', '=', 'lowongan.id')
-            ->join('tempat_magang', 'lowongan.tempat_magang_id', '=', 'tempat_magang.id')
+            // ->join('tempat_magang', 'lowongan.tempat_magang_id', '=', 'tempat_magang.id')
             ->where('pengajuan_magang.id_peserta', '=', auth()->user()->id)
             ->select('*')
             ->get();

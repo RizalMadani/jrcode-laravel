@@ -80,21 +80,19 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/dashboard/masterJadwal/{id}', [KelasController::class, 'updateJadwal']);
         Route::get('/dashboard/masterJadwal/delete/{id}', [KelasController::class, 'destroyJadwal']);
 
-        //Mater Magang Routes
-        Route::get('/dashboard/masterTempatMagang', [TempatMagangController::class, 'index']);
-        Route::get('/dashboard/masterTempatMagang/create', [TempatMagangController::class, 'create']);
-        Route::post('/dashboard/masterTempatMagang', [TempatMagangController::class, 'store']);
-        Route::get('/dashboard/masterTempatMagang/edit/{tempatMagang}', [TempatMagangController::class, 'edit']);
-        Route::post('/dashboard/masterTempatMagang/{tempatMagang}', [TempatMagangController::class, 'update']);
-        Route::get('/dashboard/masterTempatMagang/delete/{tempatMagang}', [TempatMagangController::class, 'destroy']);
+        // //Mater Magang Routes
+        // Route::get('/dashboard/masterTempatMagang', [TempatMagangController::class, 'index']);
+        // Route::get('/dashboard/masterTempatMagang/create', [TempatMagangController::class, 'create']);
+        // Route::post('/dashboard/masterTempatMagang', [TempatMagangController::class, 'store']);
+        // Route::get('/dashboard/masterTempatMagang/edit/{tempatMagang}', [TempatMagangController::class, 'edit']);
+        // Route::post('/dashboard/masterTempatMagang/{tempatMagang}', [TempatMagangController::class, 'update']);
+        // Route::get('/dashboard/masterTempatMagang/delete/{tempatMagang}', [TempatMagangController::class, 'destroy']);
 
-        //Mater Lowongan Routes
-        Route::get('/dashboard/masterLowongan/{tempatMagang}', [LowonganController::class, 'index']);
-        Route::get('/dashboard/masterLowongan/{tempatMagang}/create', [LowonganController::class, 'create']);
+        //Master Lowongan Routes
+        Route::get('/dashboard/masterLowongan', [LowonganController::class, 'index']);
+        Route::get('/dashboard/masterLowongan/create', [LowonganController::class, 'create']);
         Route::post('/dashboard/masterLowongan/', [LowonganController::class, 'store']);
-
         Route::get('/dashboard/masterLowongan/edit/{lowongan}', [LowonganController::class, 'edit']);
-
         Route::post('/dashboard/masterLowongan/{lowongan}', [LowonganController::class, 'update']);
         Route::get('/dashboard/masterLowongan/delete/{lowongan}', [LowonganController::class, 'destroy']);
         Route::get('/dashboard/masterLowongan/pengajuanMagang/{lowongan}', [LowonganController::class, 'pengajuanMagang']);
@@ -106,9 +104,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['check_login:peserta']], function () {
         //Pesanan Kelas Routes
-        Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
+        // Route::get('/peserta/daftar_magang', [TempatMagangController::class, 'tempat_magang']);
+        Route::get('/peserta/lowongan', [LowonganController::class, 'lowongan']);
         Route::get('/peserta/lowongan/history', [LowonganController::class, 'history_pengajuan_lowongan']);
-        Route::get('/peserta/lowongan/{tempatMagang}', [LowonganController::class, 'lowongan']);
         Route::post('/peserta/lowongan/pengajuan', [LowonganController::class, 'pengajuan_lowongan']);
     });
 });

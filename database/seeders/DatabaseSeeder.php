@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
                 "email" => 'admin@email.com',
                 "no_telepon" => '0856756756',
                 "role" => 'admin',
+                "asal_univ" => ""
             ],
             [
                 "nama" => 'peserta',
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
                 "email" => 'peserta@email.com',
                 "no_telepon" => '0856756756',
                 "role" => 'peserta',
+                "asal_univ" => "Universitas A"
             ],
         ];
 

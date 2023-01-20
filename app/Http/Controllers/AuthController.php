@@ -33,7 +33,7 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->intended('/dashboard/masterAdmin')->with('success', 'Anda Berhasil Login');
             } else if ($user->role == 'peserta') {
-                return redirect()->intended('/peserta/daftar_magang')->with('success', 'Anda Berhasil Login');
+                return redirect()->intended('/peserta/lowongan/history')->with('success', 'Anda Berhasil Login');
 
                 // dd("OK!");
             }

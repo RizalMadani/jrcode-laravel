@@ -31,7 +31,6 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Perusahaan</th>
                                                 <th>Judul Magang</th>
                                                 <th>Nama Peserta</th>
                                                 <th>CV</th>
@@ -44,7 +43,6 @@
                                             @foreach ($data as $pengajuan)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $pengajuan->lowongan->tempatMagang->nama_perusahaan }}</td>
                                                     <td>{{ $pengajuan->lowongan->judul_lowongan }}</td>
                                                     <td>{{ $pengajuan->peserta->nama }}</td>
                                                     <td><a href="{{ asset('storage/' . $pengajuan->cv) }}"

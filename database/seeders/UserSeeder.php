@@ -33,7 +33,8 @@ class UserSeeder extends Seeder
                 "kelamin" => "laki-laki",
                 "email" => 'peserta@email.com',
                 "no_telepon" => '0856756756',
-                "role" => 'peserta'
+                "role" => 'peserta',
+                "asal_univ" => "Universitas A"
             ],
         ];
 
