@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\KonfirmasiEmail;
 use App\Models\PengajuanMagang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PengajuanMagangController extends Controller
 {
@@ -30,6 +32,14 @@ class PengajuanMagangController extends Controller
         $find->update([
             'status' => $request->status,
         ]);
+
+        $peserta = $find->first()->peserta;
+
+        Mail::to($peserta->email)->send(new KonfirmasiEmail([
+            'nama_peserta' => $peserta->nama,
+            'status'       => $request->status,
+        ]));
+
         return back()->with('success', 'Status pengajuan magang telah di update');
     }
 
